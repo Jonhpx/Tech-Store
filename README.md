@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>TechStore</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<header class="topo">
+
+<div class="logo">
+Tech<span>Store</span>
+</div>
+
+<nav class="menu">
+<a href="#">Início</a>
+<a href="#produtos">Produtos</a>
+<a href="#">Ofertas</a>
+<a href="#">Carrinho (<span id="contador">0</span>)</a>
+</nav>
+
+</header>
+
+<section class="inicio">
+  <div class="container">
+    <h1>Bem-vindo à TechStore!</h1>
+    <p>Encontre os melhores produtos de tecnologia com preços incríveis!</p>
+    <button onclick="window.location.href='#produtos'">Ver Produtos</button>
+  </div>
+</section>
+
+<div class="busca">
+  <input type="text" id="buscaInput" placeholder="Buscar produto: Ex: notebook, celular...">
+  <button onclick="filtrarProdutos()">Pesquisar</button>
+</div>
+
+<section class="produtos" id="produtos">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=200&auto=format&fit=crop" alt="Smartphone X">
+<div class="info">
+<h3>Smartphone X</h3>
+<p>Smartphone com 128GB de armazenamento e câmera de alta resolução.</p>
+<span class="preco">R$ 1.499,00</span>
+</div>
+<button class="btn" onclick="adicionar()">Adicionar ao carrinho</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=200&auto=format&fit=crop" alt="Notebook Pro">
+<div class="info">
+<h3>Notebook Pro</h3>
+<p>Notebook ideal para estudo e trabalho com alto desempenho.</p>
+<span class="preco">R$ 3.999,00</span>
+</div>
+<button class="btn" onclick="adicionar()">Adicionar ao carrinho</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=200&auto=format&fit=crop" alt="Tablet Plus">
+<div class="info">
+<h3>Tablet Plus</h3>
+<p>Tablet com tela de 10 polegadas ideal para estudo e entretenimento.</p>
+<span class="preco">R$ 1.299,00</span>
+</div>
+<button class="btn" onclick="adicionar()">Adicionar ao carrinho</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&auto=format&fit=crop" alt="Fone Bluetooth">
+<div class="info">
+<h3>Fone Bluetooth</h3>
+<p>Fone sem fio com som potente e bateria de longa duração.</p>
+<span class="preco">R$ 299,00</span>
+</div>
+<button class="btn" onclick="adicionar()">Adicionar ao carrinho</button>
+</div>
+
+</section>
+
+<footer class="rodape">
+Suporte | FAQ | Política de Troca
+</footer>
+
+<script>
+let carrinho = 0;
+
+function adicionar(){
+  carrinho++;
+  document.getElementById("contador").innerText = carrinho;
+  alert("Produto adicionado ao carrinho!");
+}
+
+function filtrarProdutos(){
+  let input = document.getElementById("buscaInput").value.toLowerCase();
+  let cards = document.querySelectorAll(".produtos .card");
+  cards.forEach(card => {
+    let nome = card.querySelector("h3").innerText.toLowerCase();
+    card.style.display = nome.includes(input) ? "block" : "none";
+  });
+}
+</script>
+
+</body>
+</html>
